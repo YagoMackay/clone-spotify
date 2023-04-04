@@ -26,10 +26,10 @@ import {
 } from 'react-icons/md';
 import { formatTime } from '../lib/formatters';
 
-const Player = ({ songs, activeSong }) => {
+const Player = ({ songs, activeSong }: any) => {
   const [playing, setPlaying] = useState(true);
   const [index, setIndex] = useState(
-    songs.findIndex((s) => s.id === activeSong.id)
+    songs.findIndex((s: any) => s.id === activeSong.id)
   );
   const [seek, setSeek] = useState(0.0);
   const [isSeeking, setIsSeeking] = useState(false);
@@ -43,10 +43,11 @@ const Player = ({ songs, activeSong }) => {
   const setActiveSong = useStoreActions((state: any) => state.changeActiveSong);
 
   useEffect(() => {
-    let timerId;
+    let timerId: any;
 
     if (playing && !isSeeking) {
       const f = () => {
+        //@ts-ignore
         setSeek(soundRef.current.seek());
         timerId = requestAnimationFrame(f);
       };
@@ -66,12 +67,12 @@ const Player = ({ songs, activeSong }) => {
     repeatRef.current = repeat;
   }, [repeat]);
 
-  const setPlayState = (value) => {
+  const setPlayState = (value: any) => {
     setPlaying(value);
     setVolume(volume);
   };
 
-  const setPlayVolume = (e) => {
+  const setPlayVolume = (e: any) => {
     setVolume(parseFloat(e[0]));
   };
 
@@ -87,17 +88,20 @@ const Player = ({ songs, activeSong }) => {
     setMute((state) => !state);
   };
   const onMute = () => {
+    //@ts-ignore
     setVolume((state) => !state);
     setMute((state) => !state);
   };
 
   const prevSong = () => {
+    //@ts-ignore
     setIndex((state) => {
       return state ? state - 1 : songs.length - 1;
     });
   };
 
   const nextSong = () => {
+    //@ts-ignore
     setIndex((state) => {
       if (shuffle) {
         const next = Math.floor(Math.random() * songs.length);
@@ -115,6 +119,7 @@ const Player = ({ songs, activeSong }) => {
   const onEnd = () => {
     if (repeatRef.current) {
       setSeek(0);
+      //@ts-ignore
       soundRef.current.seek(0);
     } else {
       nextSong();
@@ -122,12 +127,14 @@ const Player = ({ songs, activeSong }) => {
   };
 
   const onLoad = () => {
+    //@ts-ignore
     const songDuration = soundRef.current.duration();
     setDuration(songDuration);
   };
 
-  const onSeek = (e) => {
+  const onSeek = (e: any) => {
     setSeek(parseFloat(e[0]));
+    //@ts-ignore
     soundRef.current.seek(e[0]);
   };
 

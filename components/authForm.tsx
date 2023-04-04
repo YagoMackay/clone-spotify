@@ -9,25 +9,28 @@ const AuthForm: FC<{ mode: 'signin' | 'signup'; isSignUp: boolean }> = ({
   mode,
   isSignUp,
 }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
 
-    await auth(mode, { email, password, firstName, lastName });
+    await auth(mode, { email, password });
     setIsLoading(false);
     router.push('/');
   };
 
   return (
     <Box height="100vh" width="100vw" bg="black" color="white">
+      {
+        //@ts-ignore
+      }
       <Flex
         justify="center"
         align="center"
@@ -49,7 +52,7 @@ const AuthForm: FC<{ mode: 'signin' | 'signup'; isSignUp: boolean }> = ({
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            {isSignUp && (
+            {/* {isSignUp && (
               <>
                 {' '}
                 <Input
@@ -63,7 +66,7 @@ const AuthForm: FC<{ mode: 'signin' | 'signup'; isSignUp: boolean }> = ({
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </>
-            )}
+            )} */}
             <Box display="flex" flexDirection="column">
               <Button
                 marginTop="10px"
@@ -87,7 +90,6 @@ const AuthForm: FC<{ mode: 'signin' | 'signup'; isSignUp: boolean }> = ({
                 <Link href="/signup" passHref>
                   <Button
                     marginTop="10px"
-                    x
                     type="submit"
                     bg="green.500"
                     sx={{
@@ -95,6 +97,7 @@ const AuthForm: FC<{ mode: 'signin' | 'signup'; isSignUp: boolean }> = ({
                         bg: 'green.300',
                       },
                     }}
+                    //@ts-ignore
                     href="/signup"
                   >
                     Sign Up

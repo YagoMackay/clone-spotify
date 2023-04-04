@@ -101,23 +101,27 @@ const Sidebar = () => {
         </Box>
         <Divider color="gray.800" />
         <Box height="66%" overflowY="auto" paddingY="20px">
-          <List spaceing={2}>
-            {playlists.map((playlist) => (
-              <ListItem paddingX="20px" key={playlist.id}>
-                <LinkBox>
-                  <NextLink
-                    href={{
-                      pathname: '/playlist/[id]',
-                      query: { id: playlist.id },
-                    }}
-                    passHref
-                  >
-                    <LinkOverlay>{playlist.name}</LinkOverlay>
-                  </NextLink>
-                </LinkBox>
-              </ListItem>
-            ))}
-          </List>
+          {
+            //@ts-ignore
+
+            <List spaceing={2}>
+              {playlists.map((playlist: any) => (
+                <ListItem paddingX="20px" key={playlist.id}>
+                  <LinkBox>
+                    <NextLink
+                      href={{
+                        pathname: '/playlist/[id]',
+                        query: { id: playlist.id },
+                      }}
+                      passHref
+                    >
+                      <LinkOverlay>{playlist.name}</LinkOverlay>
+                    </NextLink>
+                  </LinkBox>
+                </ListItem>
+              ))}
+            </List>
+          }
         </Box>
       </Box>
     </Box>

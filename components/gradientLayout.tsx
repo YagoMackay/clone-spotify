@@ -9,7 +9,7 @@ const GradientLayout = ({
   title,
   description,
   roundImage,
-}) => {
+}: any) => {
   return (
     <Box
       height="100%"
@@ -18,6 +18,7 @@ const GradientLayout = ({
     >
       <SimpleGrid
         bg={`${color}.600`}
+        //@ts-ignore
         align="start"
         spacing="10px"
         gridTemplateColumns={{

@@ -3,7 +3,7 @@ import SongTable from '../../components/songsTable';
 import { validateToken } from '../../lib/auth';
 import prisma from '../../lib/prisma';
 
-const getBGColor = (id) => {
+const getBGColor = (id: any) => {
   const colors = [
     'red',
     'green',
@@ -18,7 +18,7 @@ const getBGColor = (id) => {
   return colors[id - 1] || colors[Math.floor(Math.random() * colors.length)];
 };
 
-const Playlist = ({ playlist }) => {
+const Playlist = ({ playlist }: any) => {
   const color = getBGColor(playlist.id);
 
   return (
@@ -34,7 +34,7 @@ const Playlist = ({ playlist }) => {
     </GradientLayout>
   );
 };
-
+//@ts-ignore
 export const getServerSideProps = async ({ query, req }) => {
   let user;
 
@@ -52,6 +52,7 @@ export const getServerSideProps = async ({ query, req }) => {
   const [playlist] = await prisma.playlist.findMany({
     where: {
       id: +query.id,
+      //@ts-ignore
       userId: user.id,
     },
     include: {

@@ -15,17 +15,17 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs';
 import { formatDate, formatTime } from '../lib/formatters';
 
-const SongTable = ({ songs }) => {
+const SongTable = ({ songs }: any) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs);
   const setActiveSong = useStoreActions((store: any) => store.changeActiveSong);
 
   const [playing, setPlaying] = useState(false);
 
-  const setPlayState = (value) => {
+  const setPlayState = (value: any) => {
     setPlaying(value);
   };
 
-  const handlePlay = (value, activeSong?) => {
+  const handlePlay = (value: any, activeSong?: any) => {
     setActiveSong(activeSong || songs[0]);
     playSongs(songs);
     setPlayState(value);
@@ -97,7 +97,7 @@ const SongTable = ({ songs }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {songs.map((song, i) => (
+            {songs.map((song: any, i: any) => (
               <Tr
                 sx={{
                   transition: 'all .3s ',

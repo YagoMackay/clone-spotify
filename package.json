@@ -34,7 +34,11 @@
     "typescript": "5.0.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cookie": "^0.5.1",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/react": "18.0.1",
+    "@types/react-howler": "^5.2.0",
     "babel-plugin-superjson-next": "^0.4.2",
     "eslint": "^8.4.1",
     "eslint-config-airbnb": "^19.0.2",

@@ -12,9 +12,13 @@ const NotFound = () => {
       <Box my={6}>
         <NextLink href="/" passHref>
           <LinkOverlay>
-            <Button href="/" colorScheme="teal">
-              Return to home
-            </Button>
+            {
+              //@ts-ignore
+
+              <Button href="/" colorScheme="teal">
+                Return to home
+              </Button>
+            }
           </LinkOverlay>
         </NextLink>
       </Box>

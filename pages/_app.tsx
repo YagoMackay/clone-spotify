@@ -32,7 +32,7 @@ const theme = extendTheme({
   },
 });
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: any) => {
   return (
     <ChakraProvider theme={theme}>
       <StoreProvider store={store}>

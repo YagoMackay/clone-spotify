@@ -5,9 +5,8 @@ export const auth = (
   body: {
     email: string;
     password: string;
-    firstName: string;
-    lastName: string;
   }
 ) => {
+  //@ts-ignore
   return fetcher(`/${mode}`, body);
 };
